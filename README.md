@@ -10,5 +10,5 @@ O trabalho tem como objetivo explorar e implementar diferentes estruturas de dad
 - **Ícaro**
 - **Guilherme**
 
-Este README será atualizado regularmente com novas informações, progresso do projeto e recursos adicionais.
+Este README será atualizado regularmente com novas informações, progresso do projeto e recursos adicionais...
  
