@@ -8,7 +8,6 @@ int main()
 
     somaRacional(r1, r2);
     multRacional(r1, r2);
-    imprimir(r1, r2);
 
     return 0;
 }
