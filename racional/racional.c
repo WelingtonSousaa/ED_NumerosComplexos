@@ -4,8 +4,7 @@
 
 struct racional
 {
-    int numerador;
-    int denominador;
+    int numerador, denominador;
 };
 
 Racional *cria(int a, int b)
@@ -24,24 +23,58 @@ Racional *cria(int a, int b)
     return r;
 }
 
-void somaRacional(Racional *x, Racional *y)
+void liberaRacional(Racional *r)
 {
-    int numerador = ((x->numerador * y->denominador) + (y->denominador * x->numerador));
-    int denominador = x->denominador * y->denominador;
-
-    printf("%d / %d + %d / %d = %d / %d\n\n", x->numerador, x->denominador, y->numerador, y->denominador, numerador, denominador);
-
-    x->numerador = numerador;
-    x->denominador = denominador;
+    free(r);
 }
 
-void multRacional(Racional *x, Racional *y)
+Racional *somaRacional(Racional *x, Racional *y)
 {
-    int numerador = x->numerador * y->numerador;
-    int denominador = x->denominador * y->denominador;
+    Racional *resultado = cria(0, 0);
 
-    printf("%d / %d x %d / %d = %d / %d\n\n", x->numerador, x->denominador, y->numerador, y->denominador, numerador, denominador);
+    resultado->numerador = ((x->numerador * y->denominador) + (y->denominador * x->numerador));
+    resultado->denominador = x->denominador * y->denominador;
 
-    x->numerador = numerador;
-    x->denominador = denominador;
+    return resultado;
+}
+
+Racional *multRacional(Racional *x, Racional *y)
+{
+    Racional *resultado = cria(0, 0);
+
+    resultado->numerador = x->numerador * y->numerador;
+    resultado->denominador = x->denominador * y->denominador;
+
+    return resultado;
+}
+
+void menuOperacoesRacionais(int *option)
+{
+    printf("Escolha uma operação:\n");
+    printf("1. Soma\n");
+    printf("2. Multiplicação\n");
+    scanf("%d", &*option);
+
+    printf("\n");
+}
+
+void imprimirOperacoesRacionais(Racional *x, Racional *y, int opt)
+{
+    Racional *res;
+
+    switch (opt)
+    {
+    case 1:
+        res = somaRacional(x, y);
+        printf("%d / %d + %d / %d = %d / %d\n\n", x->numerador, x->denominador, y->numerador, y->denominador, res->numerador, res->denominador);
+        break;
+    case 2:
+        res = multRacional(x, y);
+        printf("%d / %d x %d / %d = %d / %d\n\n", x->numerador, x->denominador, y->numerador, y->denominador, res->numerador, res->denominador);
+        break;
+
+    default:
+        printf("Opção incorreta!");
+        break;
+    }
 }

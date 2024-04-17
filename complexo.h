@@ -1,24 +1,23 @@
 #ifndef COMPLEXO_H
 #define COMPLEXO_H
 
-#include "racional/racional.h"
-
 typedef struct complexo Complexo;
 
-Racional* criaComplexoFormaAlgebrica(float a, float b);
-Racional* criaComplexoFormaPolar (float a, float b);
-void liberaComplexo(Racional* z);
-void formaAlgebrica(Racional* z, float* a, float* b);
-void formaPolar(Racional* z, float* a, float* b);
-int testeReal(Racional * z);
-int testeImaginario(Racional * z);
-int testeZero(Racional * z);
-Racional* addComplexo(Racional* z1, Racional* z2);
-Racional* subComplexo(Racional* z1, Racional* z2);
-Racional* multComplexo(Racional* z1, Racional* z2);
-Racional* divComplexo(Racional* z1, Racional* z2);
-Racional* conjugadoComplexo(Racional* z);
-Racional* potenciaComplexo(Racional* z, int n);
-Racional* raizComplexo(Racional* z, int n);
+Complexo* criaComplexoFormaAlgebrica(float a, float b);
+Complexo* criaComplexoFormaPolar (float a, float b);
+void liberaComplexo(Complexo* z);
+void formaAlgebrica(Complexo* z, float* a, float* b);
+void formaPolar(Complexo* z, float* a, float* b);
+int testeReal(Complexo* z);
+int testeImaginario(Complexo* z);
+int testeZero(Complexo* z);
+Complexo* addComplexo(Complexo* z1, Complexo* z2);
+Complexo* subComplexo(Complexo* z1, Complexo* z2);
+Complexo* multComplexo(Complexo* z1, Complexo* z2);
+Complexo* divComplexo(Complexo* z1, Complexo* z2);
+Complexo* conjugadoComplexo(Complexo* z);
+Complexo* potenciaComplexo(Complexo* z, int n);
+Complexo* raizComplexo(Complexo* z, int n);
+void imprimirComplexos(Complexo *z, int opt);
 
 #endif
