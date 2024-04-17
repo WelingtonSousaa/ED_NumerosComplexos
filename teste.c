@@ -1,20 +1,9 @@
 #include <stdio.h>
 #include <locale.h>
-#include "racional/racional.h"
 #include "complexo.h"
 
 int main()
 {
-    // Racional *r1 = cria(1, 2);
-    // Racional *r2 = cria(2, 4);
-    // int option;
-
-    // menuOperacoesRacionais(&option);
-    // imprimirOperacoesRacionais(r1, r2, option);
-
-    // liberaRacional(r1);
-    // liberaRacional(r2);
-
     Complexo *z;
     int opt;
 
