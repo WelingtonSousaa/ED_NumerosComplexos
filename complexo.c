@@ -5,7 +5,8 @@
 
 struct complexo
 {
-    float a, b;
+    float real;
+    float imaginario;
 };
 
 // Desenvolvida por Ícaro
@@ -16,8 +17,8 @@ Complexo *criaComplexoFormaAlgebrica(float a, float b)
 
     if (z != NULL)
     {
-        z->a = a;
-        z->b = b;
+        z->real = a;
+        z->imaginario = b;
 
         return z;
     }
@@ -36,8 +37,8 @@ Complexo *criaComplexoFormaPolar(float a, float b)
 
     if (z != NULL)
     {
-        z->a = a * cos(b);
-        z->b = a * sin(b);
+        z->real = a * cos(b);
+        z->imaginario = a * sin(b);
 
         return z;
     }
@@ -59,58 +60,118 @@ void liberaComplexo(Complexo *z)
 // Função que retorna a parte real a e a parte imaginária b do número complexo z na forma algébrica z = a + bi, com a e b sendo números reais.
 void formaAlgebrica(Complexo *z, float *a, float *b)
 {
-    *a = z->a;
-    *b = z->b;
+    *a = z->real;
+    *b = z->imaginario;
 }
 
 // Em desenvolvimento por Ícaro...
 // Função que retorna o módulo a e o argumento b do número complexo z na forma polar z = a(cos(b) + sen(b)i), com a e b sendo números reais.
 void formaPolar(Complexo *z, float *a, float *b)
 {
-    *a = sqrt(pow(z->a, 2) + pow(z->b, 2));
+    *a = sqrt(pow(z->real, 2) + pow(z->imaginario, 2));
     // Falta desenvolver o argumento b...
 }
 
-// Em desenvolvimento por {nome}...
-
+// Desenvolvido por Welington
+// Função que verifica se a parte imaginária de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeReal(Complexo *z)
 {
+    if (z->imaginario == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-// Em desenvolvimento por {nome}...
-
+// Desenvolvido por Welington
+//  Função que verifica se a parte real de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeImaginario(Complexo *z)
 {
+    if (z->real == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-// Em desenvolvimento por {nome}...
-
+// Desenvolvido por Welington
+// Função que verifica se tanto a parte real quanto a parte imaginária de um número complexo são iguais a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeZero(Complexo *z)
 {
+    if (z->real == 0 && z->imaginario == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-// Em desenvolvimento por {nome}...
-
+// Desenvolvido por Welington
+// Retorna um número complexo oriundo da soma z = z1 + z2, com z1 e z2 sendo números complexos.
 Complexo *addComplexo(Complexo *z1, Complexo *z2)
 {
+    Complexo *resultado = (Complexo *)malloc(sizeof(Complexo));
+    if (resultado != NULL)
+    {
+        resultado->real = z1->real + z2->real;
+        resultado->imaginario = z1->imaginario + z2->imaginario;
+    }
+    return resultado;
 }
 
-// Em desenvolvimento por {nome}...
-
+// Desenvolvido por Welington
+// Retorna um número complexo oriundo da subtração z = z1 - z2, com z1 e z2 sendo números complexos
 Complexo *subComplexo(Complexo *z1, Complexo *z2)
 {
+    Complexo *resultado = (Complexo *)mallox(sizeof(Complexo));
+    if (resultado != NULL)
+    {
+        resultado->real = z1->real - z2->real;
+        resultado->imaginario = z1->imaginario - z2->imaginario;
+    }
+    return resultado;
 }
 
-// Em desenvolvimento por {nome}...
-
+// Desenvolvido por Welington
+// Retorna um número complexo oriundo da multiplicação z = z1 * z2, com z1 e z2 sendo números complexos
 Complexo *multComplexo(Complexo *z1, Complexo *z2)
 {
+    Complexo *resultado = (Complexo *)malloc(sizeof(Complexo));
+    if (resultado != NULL)
+    {
+        resultado->real = z1->real * z2->real - z1->imaginario * z2->imaginario;
+        resultado->imaginario = z1->real * z2->imaginario + z1->imaginario * z2->real;
+        /*
+         *  z1 x z2 = (a+ bi) x (x +di)
+         *  z1 x z2 = ac + adi + bci + bdi²
+         *  i² = -1, então
+         *  z1 x z2 = (ac - bd) + (ad+bc)i
+         *  logo, a parte real do resultado da multiplicação é (ac - bd), enquanto a parte imaginária é (ad+bc)
+         */
+    }
+    return resultado;
 }
 
-// Em desenvolvimento por {nome}...
-
+// Desenvolvido por Welington
+// Retorna um número complexo oriundo da divisão z = z1 / z2, com z1 e z2 sendo números complexos e z2 diferente de zero.
 Complexo *divComplexo(Complexo *z1, Complexo *z2)
 {
+    Complexo *resultado = (Complexo *)malloc(sizeof(Complexo));
+    if (resultado != NULL)
+    {
+        float divisor = z2->real * z2->real + z2->imaginario * z2->imaginario;
+        resultado->real = (z1->real * z2->real + z1->imaginario * z1->imaginario) / divisor;
+        resultado->imaginario = (z1->imaginario * z2->real - z1->real * z2->imaginario) / divisor;
+    }
+    return resultado;
 }
 
 // Em desenvolvimento por {nome}...
@@ -138,7 +199,7 @@ void imprimirComplexos(Complexo *z, int opt)
     switch (opt)
     {
     case 1:
-        printf("\n%.2f + %.2fi\n\n", z->a, z->b);
+        printf("\n%.2f + %.2fi\n\n", z->real, z->imaginario);
         break;
     case 2:
         // printf("\n%.2f(cos(%.2f) + sen(%.2f)i)\n", z->a, z->b, z->b);
