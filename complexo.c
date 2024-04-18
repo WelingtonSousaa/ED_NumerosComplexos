@@ -55,16 +55,20 @@ void liberaComplexo(Complexo *z)
     free(z);
 }
 
-// Em desenvolvimento por Ícaro...
+// Desenvolvida por Ícaro
 // Função que retorna a parte real a e a parte imaginária b do número complexo z na forma algébrica z = a + bi, com a e b sendo números reais.
 void formaAlgebrica(Complexo *z, float *a, float *b)
 {
+    *a = z->a;
+    *b = z->b;
 }
 
 // Em desenvolvimento por Ícaro...
 // Função que retorna o módulo a e o argumento b do número complexo z na forma polar z = a(cos(b) + sen(b)i), com a e b sendo números reais.
 void formaPolar(Complexo *z, float *a, float *b)
 {
+    *a = sqrt(pow(z->a, 2) + pow(z->b, 2));
+    // Falta desenvolver o argumento b...
 }
 
 // Em desenvolvimento por {nome}...
