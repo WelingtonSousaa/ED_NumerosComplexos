@@ -13,26 +13,19 @@ struct complexo
 // Função para criar um número complexo na forma algébrica z = a + bi, com a e b sendo números reais.
 Complexo *criaComplexoFormaAlgebrica(float a, float b)
 {
-    if (a > 0 && b > 0)
+    Complexo *z = (Complexo *)malloc(sizeof(Complexo));
+
+    if (z != NULL)
     {
-        Complexo *z = (Complexo *)malloc(sizeof(Complexo));
+        z->real = a;
+        z->imaginario = b;
 
-        if (z != NULL)
-        {
-            z->real = a;
-            z->imaginario = b;
-
-            return z;
-        }
-        else
-        {
-            printf("Memória insuficiente");
-            exit(1);
-        }
+        return z;
     }
     else
     {
-        printf("Valores incorretos\n");
+        printf("Memória insuficiente");
+        exit(1);
     }
 }
 
@@ -40,26 +33,19 @@ Complexo *criaComplexoFormaAlgebrica(float a, float b)
 // Função que cria um número complexo na forma polar z = a(cos(b) + sen(b)i), com a e b sendo números reais.
 Complexo *criaComplexoFormaPolar(float a, float b)
 {
-    if (a > 0 && b > 0)
+    Complexo *z = (Complexo *)malloc(sizeof(Complexo));
+
+    if (z != NULL)
     {
-        Complexo *z = (Complexo *)malloc(sizeof(Complexo));
+        z->real = a * cos(b);
+        z->imaginario = a * sin(b);
 
-        if (z != NULL)
-        {
-            z->real = a * cos(b);
-            z->imaginario = a * sin(b);
-
-            return z;
-        }
-        else
-        {
-            printf("Memória insuficiente");
-            exit(1);
-        }
+        return z;
     }
     else
     {
-        printf("Valores incorretos!");
+        printf("Memória insuficiente");
+        exit(1);
     }
 }
 

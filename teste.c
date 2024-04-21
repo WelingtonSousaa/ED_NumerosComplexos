@@ -17,7 +17,7 @@ int main()
     switch (opt)
     {
     case 1:
-        z = criaComplexoFormaAlgebrica(3, 3);
+        z = criaComplexoFormaAlgebrica(3, -3);
         break;
     case 2:
         z = criaComplexoFormaPolar(3.0, 5.0);
