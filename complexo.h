@@ -18,6 +18,6 @@ Complexo* divComplexo(Complexo* z1, Complexo* z2);
 Complexo* conjugadoComplexo(Complexo* z);
 Complexo* potenciaComplexo(Complexo* z, int n);
 Complexo* raizComplexo(Complexo* z, int n);
-void imprimirComplexos(Complexo *z, int opt);
+void imprimirComplexos(Complexo *z, float *a, float *b, int opt);
 
 #endif

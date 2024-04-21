@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <locale.h>
+#include <math.h>
 #include "complexo.h"
 
 int main()
 {
     Complexo *z;
     int opt;
+    float a, b;
 
     printf("Informe uma opção:\n");
     printf("1. Complexo Forma Algébrica.\n");
@@ -15,7 +17,7 @@ int main()
     switch (opt)
     {
     case 1:
-        z = criaComplexoFormaAlgebrica(2.0, 4.0);
+        z = criaComplexoFormaAlgebrica(3, 3);
         break;
     case 2:
         z = criaComplexoFormaPolar(3.0, 5.0);
@@ -24,7 +26,7 @@ int main()
         break;
     }
 
-    imprimirComplexos(z, opt);
+    imprimirComplexos(z, &a, &b, opt);
 
     return 0;
 }

@@ -13,19 +13,26 @@ struct complexo
 // Função para criar um número complexo na forma algébrica z = a + bi, com a e b sendo números reais.
 Complexo *criaComplexoFormaAlgebrica(float a, float b)
 {
-    Complexo *z = (Complexo *)malloc(sizeof(Complexo));
-
-    if (z != NULL)
+    if (a > 0 && b > 0)
     {
-        z->real = a;
-        z->imaginario = b;
+        Complexo *z = (Complexo *)malloc(sizeof(Complexo));
 
-        return z;
+        if (z != NULL)
+        {
+            z->real = a;
+            z->imaginario = b;
+
+            return z;
+        }
+        else
+        {
+            printf("Memória insuficiente");
+            exit(1);
+        }
     }
     else
     {
-        printf("Memória insuficiente");
-        exit(1);
+        printf("Valores incorretos\n");
     }
 }
 
@@ -33,19 +40,26 @@ Complexo *criaComplexoFormaAlgebrica(float a, float b)
 // Função que cria um número complexo na forma polar z = a(cos(b) + sen(b)i), com a e b sendo números reais.
 Complexo *criaComplexoFormaPolar(float a, float b)
 {
-    Complexo *z = (Complexo *)malloc(sizeof(Complexo));
-
-    if (z != NULL)
+    if (a > 0 && b > 0)
     {
-        z->real = a * cos(b);
-        z->imaginario = a * sin(b);
+        Complexo *z = (Complexo *)malloc(sizeof(Complexo));
 
-        return z;
+        if (z != NULL)
+        {
+            z->real = a * cos(b);
+            z->imaginario = a * sin(b);
+
+            return z;
+        }
+        else
+        {
+            printf("Memória insuficiente");
+            exit(1);
+        }
     }
     else
     {
-        printf("Memória insuficiente");
-        exit(1);
+        printf("Valores incorretos!");
     }
 }
 
@@ -53,30 +67,51 @@ Complexo *criaComplexoFormaPolar(float a, float b)
 // Função que libera a memória alocada para um número complexo.
 void liberaComplexo(Complexo *z)
 {
-    free(z);
+    if (z != NULL)
+    {
+        free(z);
+    }
+    else
+    {
+        printf("Liberação do número inválida!\n");
+    }
 }
 
 // Desenvolvida por Ícaro
 // Função que retorna a parte real a e a parte imaginária b do número complexo z na forma algébrica z = a + bi, com a e b sendo números reais.
 void formaAlgebrica(Complexo *z, float *a, float *b)
 {
-    *a = z->real;
-    *b = z->imaginario;
+    if (z != NULL)
+    {
+        *a = z->real;
+        *b = z->imaginario;
+    }
+    else
+    {
+        printf("Forma algébrica do número inválida!\n");
+    }
 }
 
-// Em desenvolvimento por Ícaro...
+// Desenvolvida por Ícaro
 // Função que retorna o módulo a e o argumento b do número complexo z na forma polar z = a(cos(b) + sen(b)i), com a e b sendo números reais.
 void formaPolar(Complexo *z, float *a, float *b)
 {
-    *a = sqrt(pow(z->real, 2) + pow(z->imaginario, 2));
-    // Falta desenvolver o argumento b...
+    if (z != NULL)
+    {
+        *a = sqrt(pow(z->real, 2) + pow(z->imaginario, 2));
+        *b = atan2(z->imaginario, z->real);
+    }
+    else
+    {
+        printf("Forma polar do número inválida!\n");
+    }
 }
 
 // Desenvolvido por Welington
-// Função que verifica se a parte imaginária de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
+//  Função que verifica se a parte real de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeReal(Complexo *z)
 {
-    if (z->imaginario == 0)
+    if (z->real == 0)
     {
         return 1;
     }
@@ -87,10 +122,10 @@ int testeReal(Complexo *z)
 }
 
 // Desenvolvido por Welington
-//  Função que verifica se a parte real de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
+// Função que verifica se a parte imaginária de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeImaginario(Complexo *z)
 {
-    if (z->real == 0)
+    if (z->imaginario == 0)
     {
         return 1;
     }
@@ -131,7 +166,7 @@ Complexo *addComplexo(Complexo *z1, Complexo *z2)
 // Retorna um número complexo oriundo da subtração z = z1 - z2, com z1 e z2 sendo números complexos
 Complexo *subComplexo(Complexo *z1, Complexo *z2)
 {
-    Complexo *resultado = (Complexo *)mallox(sizeof(Complexo));
+    Complexo *resultado = (Complexo *)malloc(sizeof(Complexo));
     if (resultado != NULL)
     {
         resultado->real = z1->real - z2->real;
@@ -194,12 +229,13 @@ Complexo *raizComplexo(Complexo *z, int n)
 
 // Desenvolvida por Ícaro
 // Função para imprimir o resultado de funções
-void imprimirComplexos(Complexo *z, int opt)
+void imprimirComplexos(Complexo *z, float *a, float *b, int opt)
 {
     switch (opt)
     {
     case 1:
-        printf("\n%.2f + %.2fi\n\n", z->real, z->imaginario);
+        formaPolar(z, a, b);
+        printf("Módulo: %.2f\nArgumento: %.2f radianos\n", *a, *b);
         break;
     case 2:
         // printf("\n%.2f(cos(%.2f) + sen(%.2f)i)\n", z->a, z->b, z->b);
