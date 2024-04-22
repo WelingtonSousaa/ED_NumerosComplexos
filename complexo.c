@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdbool.h>
 #include "complexo.h"
 
 struct complexo
@@ -49,7 +50,7 @@ Complexo *criaComplexoFormaPolar(float a, float b)
     }
 }
 
-// Desen por Ícaro...
+// Desenvolvida por Ícaro...
 // Função que libera a memória alocada para um número complexo.
 void liberaComplexo(Complexo *z)
 {
@@ -93,18 +94,34 @@ void formaPolar(Complexo *z, float *a, float *b)
     }
 }
 
+// Desenvolvida por Welington
+// Verifica se o número está na forma polar
+bool isFormaPolar(Complexo *z){
+    if(z != NULL){
+        if(z->real != 0 && z->imaginario != 0){
+            return true;
+        }
+    }
+    return false;
+    /*
+     *  - Se a parte real é diferente de zero
+     */
+}
+
 // Desenvolvido por Welington
 //  Função que verifica se a parte real de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeReal(Complexo *z)
 {
-    if (z->real == 0)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
+    if(z != NULL) {
+        if (z->real == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    } 
 }
 
 // Desenvolvido por Welington
