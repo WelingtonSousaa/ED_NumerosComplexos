@@ -94,33 +94,24 @@ void formaPolar(Complexo *z, float *a, float *b)
     }
 }
 
-// Desenvolvida por Welington
-// Verifica se o número está na forma polar
-bool isFormaPolar(Complexo *z)
-{
-    if (z != NULL)
-    {
-        if (z->real != 0 && z->imaginario != 0)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
 // Desenvolvido por Welington
 //  Função que verifica se a parte real de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeReal(Complexo *z)
 {
-    if(z != NULL){
-        if (isFormaPolar(z) && z->real == 0){
+    if (z != NULL)
+    {
+        if (z->real == 0)
+        {
             return 1;
-        } else {
+        }
+        else
+        {
             return 0;
         }
-    } else {
-        printf("O endereço do número complexo fornecido não pode ser nulo!");
-        return 0;
+    }
+    else
+    {
+        printf("O endereço do número complexo não pode ser nulo");
     }
 }
 
@@ -128,13 +119,20 @@ int testeReal(Complexo *z)
 // Função que verifica se a parte imaginária de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeImaginario(Complexo *z)
 {
-    if (z->imaginario == 0)
+    if (z != NULL)
     {
-        return 1;
+        if (z->imaginario == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
     else
     {
-        return 0;
+        printf("O endereço do número complexo não pode ser nulo");
     }
 }
 
@@ -142,13 +140,20 @@ int testeImaginario(Complexo *z)
 // Função que verifica se tanto a parte real quanto a parte imaginária de um número complexo são iguais a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeZero(Complexo *z)
 {
-    if (z->real == 0 && z->imaginario == 0)
+    if (z != NULL)
     {
-        return 1;
+        if (z->real == 0 && z->imaginario == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
     else
     {
-        return 0;
+        printf("O endereço do número complexo não pode ser nulo");
     }
 }
 
@@ -156,13 +161,20 @@ int testeZero(Complexo *z)
 // Retorna um número complexo oriundo da soma z = z1 + z2, com z1 e z2 sendo números complexos.
 Complexo *addComplexo(Complexo *z1, Complexo *z2)
 {
-    Complexo *resultado = (Complexo *)malloc(sizeof(Complexo));
-    if (resultado != NULL)
+    if (z1 != NULL && z2 != NULL)
     {
-        resultado->real = z1->real + z2->real;
-        resultado->imaginario = z1->imaginario + z2->imaginario;
+        Complexo *resultado = (Complexo *)malloc(sizeof(Complexo));
+        if (resultado != NULL)
+        {
+            resultado->real = z1->real + z2->real;
+            resultado->imaginario = z1->imaginario + z2->imaginario;
+        }
+        return resultado;
     }
-    return resultado;
+    else
+    {
+        printf("Os endereços de ambos os números complexos não podem ser nulos");
+    }
 }
 
 // Desenvolvido por Welington
@@ -205,19 +217,19 @@ Complexo *divComplexo(Complexo *z1, Complexo *z2)
     return resultado;
 }
 
-// Em desenvolvimento por {nome}...
+// Em desenvolvimento por {Guilherme}...
 
 Complexo *conjugadoComplexo(Complexo *z)
 {
 }
 
-// Em desenvolvimento por {nome}...
+// Em desenvolvimento por {Guilherme}...
 
 Complexo *potenciaComplexo(Complexo *z, int n)
 {
 }
 
-// Em desenvolvimento por {nome}...
+// Em desenvolvimento por {Guilherme}...
 
 Complexo *raizComplexo(Complexo *z, int n)
 {
