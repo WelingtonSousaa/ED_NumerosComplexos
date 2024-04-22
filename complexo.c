@@ -96,9 +96,12 @@ void formaPolar(Complexo *z, float *a, float *b)
 
 // Desenvolvida por Welington
 // Verifica se o número está na forma polar
-bool isFormaPolar(Complexo *z){
-    if(z != NULL){
-        if(z->real != 0 && z->imaginario != 0){
+bool isFormaPolar(Complexo *z)
+{
+    if (z != NULL)
+    {
+        if (z->real != 0 && z->imaginario != 0)
+        {
             return true;
         }
     }
@@ -109,16 +112,16 @@ bool isFormaPolar(Complexo *z){
 //  Função que verifica se a parte real de um número complexo é igual a zero, retornando 1 caso afirmativo e 0 caso contrário.
 int testeReal(Complexo *z)
 {
-    if(z != NULL) {
-        if (z->real == 0)
-        {
+    if(z != NULL){
+        if (isFormaPolar(z) && z->real == 0){
             return 1;
-        }
-        else
-        {
+        } else {
             return 0;
         }
-    } 
+    } else {
+        printf("O endereço do número complexo fornecido não pode ser nulo!");
+        return 0;
+    }
 }
 
 // Desenvolvido por Welington
