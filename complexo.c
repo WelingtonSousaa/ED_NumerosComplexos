@@ -103,9 +103,6 @@ bool isFormaPolar(Complexo *z){
         }
     }
     return false;
-    /*
-     *  - Se a parte real é diferente de zero
-     */
 }
 
 // Desenvolvido por Welington
@@ -187,13 +184,6 @@ Complexo *multComplexo(Complexo *z1, Complexo *z2)
     {
         resultado->real = z1->real * z2->real - z1->imaginario * z2->imaginario;
         resultado->imaginario = z1->real * z2->imaginario + z1->imaginario * z2->real;
-        /*
-         *  z1 x z2 = (a+ bi) x (x +di)
-         *  z1 x z2 = ac + adi + bci + bdi²
-         *  i² = -1, então
-         *  z1 x z2 = (ac - bd) + (ad+bc)i
-         *  logo, a parte real do resultado da multiplicação é (ac - bd), enquanto a parte imaginária é (ad+bc)
-         */
     }
     return resultado;
 }
