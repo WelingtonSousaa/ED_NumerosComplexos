@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "*.embeddedhtml": "html",
-        "complexo.h": "c"
+        "complexo.h": "c",
+        "stdlib.h": "c",
+        "math.h": "c",
+        "stdio.h": "c",
+        "stdbool.h": "c"
     }
 }
