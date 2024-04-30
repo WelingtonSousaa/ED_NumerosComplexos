@@ -1,5 +1,4 @@
 #include "complexo.h"
-#include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -384,23 +383,24 @@ Complexo *raizComplexo(Complexo *z, int n)
 // Função para imprimir o resultado de funções
 void imprimirComplexos(Complexo *z, float *a, float *b, int n)
 {
-    // formaPolar
     printf("Complexo: %.2f + %.2fi\n", z->real, z->imaginario);
-    printf("Módulo: %.2f, Argumento: %.2f radianos\n", *a, *b);
+
+    // formaPolar
+    // printf("Módulo: %.2f, Argumento: %.2f radianos\n", *a, *b);
 
     // testeReal, testeImaginario, testeZero
-    printf("Parte real é zero? %s\n", testeReal(z) ? "Sim" : "Não");
-    printf("Parte imaginária é zero? %s\n", testeImaginario(z) ? "Sim" : "Não");
-    printf("É zero? %s\n", testeZero(z) ? "Sim" : "Não");
+    // printf("Parte real é zero? %s\n", testeReal(z) ? "Sim" : "Não");
+    // printf("Parte imaginária é zero? %s\n", testeImaginario(z) ? "Sim" : "Não");
+    // printf("É zero? %s\n", testeZero(z) ? "Sim" : "Não");
 
     // addComplexo, subComplexo, multComplexo, divComplexo, conjugadoComplexo, potenciaComplexo
-    printf("%.2f, %.2f\n", z->real, z->imaginario);
+    // printf("%.2f, %.2f\n", z->real, z->imaginario);
 
     // raizComplexo
-    for (int i = 0; i < n; i++)
-    {
-        float modulo, angulo;
-        formaPolar(&z[i], &modulo, &angulo);
-        printf("z%d = %.4f(cos(%.4f) + sen(%.4f)i)\n", i, modulo, angulo, angulo);
-    }
+    // for (int i = 0; i < n; i++)
+    // {
+    //     float modulo, angulo;
+    //     formaPolar(&z[i], &modulo, &angulo);
+    //     printf("z%d = %.4f(cos(%.4f) + sen(%.4f)i)\n", i, modulo, angulo, angulo);
+    // }
 }
